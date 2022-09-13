@@ -445,7 +445,7 @@ long ceSerial::Open(void) {
 	settings.c_cc[VMIN] = 1;
 	settings.c_cc[VTIME] = 0;
 
-	fd = open(port.c_str(), O_RDWR | O_NONBLOCK);
+	fd = open(port.c_str(), O_RDWR ); //	fd = open(port.c_str(), O_RDWR | O_NONBLOCK); for non block
 	if (fd == -1) {
 		return -1;
 	}
@@ -455,7 +455,7 @@ long ceSerial::Open(void) {
 	tcsetattr(fd, TCSANOW, &settings);
 
 	int flags = fcntl(fd, F_GETFL, 0);
-	fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+	fcntl(fd, F_SETFL, flags ); //			fcntl(fd, F_SETFL, flags | O_NONBLOCK); for non block
 
 	return 0;
 }
