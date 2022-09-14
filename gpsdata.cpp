@@ -43,10 +43,19 @@ int main()
                 printf("%c", ch);
                 continue;
             }
-            else
+            #ifdef ceWINDOWS
+            if (!com.comportcheck())
             {
+                printf("port is closed\r\n");
                 break;
             }
+            #else
+            if (!successFlag)
+            {
+                printf("port is closed\r\n");
+                break;
+            }
+            #endif
         }
         printf("out of loop.\n");
         // printf("Writing.\n");

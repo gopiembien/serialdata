@@ -420,6 +420,18 @@ bool ceSerial::GetCD(bool& success)
 	return r;
 }
 
+bool ceSerial::comportcheck()
+{
+    DCB dcbOri;
+    bool fSuccess;
+    fSuccess = GetCommState(hComm, &dcbOri);
+    if (!fSuccess)
+    {
+        return false;
+    }
+    return true;
+}
+
 #else  //for POSIX
 
 long ceSerial::Open(void) {

@@ -70,6 +70,8 @@ public:
 	char GetParity();
 	void SetStopBits(float nbits);
 	float GetStopBits();
+	bool comportcheck();
+	int getfd();
 };
 
 } // namespace ce 
